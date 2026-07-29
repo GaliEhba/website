@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vincent Gali Ehba — Student in Post-Quantum Cryptography</title>
+<meta name="description" content="Vincent Gali Ehba is a PhD student in Post-Quantum Cryptography at the University of Birmingham, with a strong background in mathematics, algebra, and cryptography.">
+<style>
+:root {
+  --bg: #0d1117;
+  --bg-alt: #161b22;
+  --card: #1c2129;
+  --text: #e6edf3;
+  --text-dim: #9198a1;
+  --accent: #58a6ff;
+  --accent-soft: rgba(88,166,255,0.12);
+  --border: #30363d;
+  --radius: 14px;
+}
+[data-theme="light"] {
+  --bg: #ffffff;
+  --bg-alt: #f6f8fa;
+  --card: #ffffff;
+  --text: #1f2328;
+  --text-dim: #57606a;
+  --accent: #0969da;
+  --accent-soft: rgba(9,105,218,0.08);
+  --border: #d0d7de;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 70px; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: background .3s, color .3s;
+}
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* NAV */
+header.nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(13,17,23,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+[data-theme="light"] header.nav { background: rgba(255,255,255,0.85); }
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.logo {
+  font-weight: 700; font-size: 1.15rem; letter-spacing: -0.5px;
+  color: var(--text); display: flex; align-items: center; gap: 8px;
+}
+.logo .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.nav-links { display: flex; gap: 6px; align-items: center; }
+.nav-links a {
+  color: var(--text-dim); font-size: .92rem; padding: 8px 12px;
+  border-radius: 8px; transition: .2s;
+}
+.nav-links a:hover { color: var(--text); background: var(--accent-soft); text-decoration: none; }
+.theme-btn {
+  background: var(--card); border: 1px solid var(--border); color: var(--text);
+  width: 38px; height: 38px; border-radius: 10px; cursor: pointer; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center; transition: .2s;
+}
+.theme-btn:hover { border-color: var(--accent); }
+.burger { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+/* HERO */
+.hero {
+  max-width: 1100px; margin: 0 auto; padding: 80px 24px 60px;
+  display: grid; grid-template-columns: 1fr 260px; gap: 50px; align-items: center;
+}
+.hero h1 { font-size: 2.6rem; letter-spacing: -1px; margin-bottom: 12px; line-height: 1.15; }
+.hero h1 .accent { color: var(--accent); }
+.hero .sub { font-size: 1.15rem; color: var(--text-dim); margin-bottom: 22px; }
+.hero p.bio { color: var(--text-dim); margin-bottom: 26px; max-width: 560px; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+.tag {
+  background: var(--accent-soft); color: var(--accent);
+  padding: 5px 12px; border-radius: 20px; font-size: .82rem; font-weight: 500;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn {
+  padding: 11px 22px; border-radius: 10px; font-weight: 600; font-size: .92rem;
+  transition: .2s; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { opacity: .88; text-decoration: none; }
+.btn-outline { border: 1px solid var(--border); color: var(--text); }
+.btn-outline:hover { border-color: var(--accent); text-decoration: none; }
+.avatar {
+  width: 200px; height: 200px; border-radius: 50%; margin: 0 auto;
+  background: linear-gradient(135deg, var(--accent), #6f42c1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem; font-weight: 700; color: #fff;
+  box-shadow: 0 8px 30px rgba(88,166,255,0.25);
+}
+
+/* SECTIONS */
+section { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
+.section-title {
+  font-size: 1.7rem; margin-bottom: 6px; letter-spacing: -0.5px;
+  display: flex; align-items: center; gap: 12px;
+}
+.section-title::before {
+  content: ""; width: 4px; height: 26px; background: var(--accent); border-radius: 3px;
+}
+.section-sub { color: var(--text-dim); margin-bottom: 36px; }
+
+/* SKILLS */
+.skills-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill {
+  background: var(--card); border: 1px solid var(--border);
+  padding: 9px 16px; border-radius: 10px; font-size: .9rem; font-weight: 500;
+  transition: .2s;
+}
+.skill:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before {
+  content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px;
+  width: 2px; background: var(--border);
+}
+.tl-item { position: relative; margin-bottom: 34px; }
+.tl-item::before {
+  content: ""; position: absolute; left: -32px; top: 6px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--bg); border: 3px solid var(--accent);
+}
+.tl-date { font-size: .82rem; color: var(--accent); font-weight: 600; margin-bottom: 4px; }
+.tl-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px 22px; transition: .2s;
+}
+.tl-card:hover { border-color: var(--accent); transform: translateX(4px); }
+.tl-card h3 { font-size: 1.12rem; margin-bottom: 4px; }
+.tl-card .org { color: var(--text-dim); font-size: .92rem; margin-bottom: 10px; }
+.tl-card ul { list-style: none; }
+.tl-card ul li { padding-left: 18px; position: relative; color: var(--text-dim); font-size: .9rem; margin-bottom: 4px; }
+.tl-card ul li::before { content: "▹"; position: absolute; left: 0; color: var(--accent); }
+.badge {
+  display: inline-block; background: var(--accent-soft); color: var(--accent);
+  font-size: .72rem; font-weight: 600; padding: 2px 9px; border-radius: 12px; margin-left: 8px;
+}
+
+/* CARDS GRID */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 20px; }
+.card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 24px; transition: .2s;
+}
+.card:hover { border-color: var(--accent); transform: translateY(-4px); }
+.card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+.card .meta { color: var(--accent); font-size: .82rem; font-weight: 600; margin-bottom: 10px; }
+.card p { color: var(--text-dim); font-size: .9rem; }
+.card .authors { font-size: .85rem; color: var(--text); margin-bottom: 6px; font-style: italic; }
+
+/* LANGUAGES */
+.lang-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 16px; }
+.lang-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 22px; }
+.lang-card h4 { margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+.lang-card .lvl { font-size: .72rem; background: var(--accent-soft); color: var(--accent); padding: 2px 9px; border-radius: 12px; }
+.lang-card .skills-mini { font-size: .82rem; color: var(--text-dim); }
+
+/* CONTACT */
+.contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.contact-list { list-style: none; }
+.contact-list li { margin-bottom: 16px; display: flex; align-items: center; gap: 12px; color: var(--text-dim); }
+.contact-list .ic {
+  width: 40px; height: 40px; border-radius: 10px; background: var(--accent-soft);
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.form input, .form textarea {
+  width: 100%; padding: 12px 14px; margin-bottom: 14px;
+  background: var(--bg-alt); border: 1px solid var(--border); border-radius: 10px;
+  color: var(--text); font-family: inherit; font-size: .92rem;
+}
+.form input:focus, .form textarea:focus { outline: none; border-color: var(--accent); }
+
+/* FOOTER */
+footer {
+  border-top: 1px solid var(--border); text-align: center;
+  padding: 30px 24px; color: var(--text-dim); font-size: .88rem;
+}
+footer .socials { display: flex; justify-content: center; gap: 18px; margin-bottom: 14px; }
+footer .socials a { color: var(--text-dim); font-size: .9rem; }
+
+@media (max-width: 820px) {
+  .hero { grid-template-columns: 1fr; text-align: center; }
+  .hero-tags, .hero-btns { justify-content: center; }
+  .avatar { order: -1; }
+  .contact-wrap { grid-template-columns: 1fr; }
+  .nav-links { position: fixed; top: 64px; left: 0; right: 0; flex-direction: column;
+    background: var(--bg-alt); border-bottom: 1px solid var(--border); padding: 16px; display: none; }
+  .nav-links.open { display: flex; }
+  .burger { display: block; }
+  .hero h1 { font-size: 2rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#home" class="logo"><span class="dot"></span> Vincent Gali Ehba</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#activities">Activities</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <button class="theme-btn" id="themeBtn" title="Toggle theme">🌙</button>
+      <button class="burger" id="burger">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div>
+    <h1>Vincent Gali Ehba<br><span class="accent">Post-Quantum Cryptography</span></h1>
+    <p class="sub">PhD Student · University of Birmingham, UK</p>
+    <p class="bio">I am a doctoral researcher focused on the analysis of post-quantum cryptographic schemes, a theoretical approach unsing foundation in algebra, number theory and algebraic geometry. My research investigates the security of cryptographic protocols under different models of attack.</p>
+    <div class="hero-tags">
+      <span class="tag">Post-Quantum Cryptography</span>
+      <!--<span class="tag">Isogeny-Based Crypto</span>-->
+      <span class="tag">Elliptic Curves</span>
+      <span class="tag">Multivariate-based crypto</span>
+      <span class="tag">Lattice-based crypto</span>
+      <span class="tag">Number Theory</span>
+      <span class="tag">Algebraic Geometry</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">✉ Get in touch</a>
+      <a href="https://linkedin.com/in/vincent-gali-ehba" target="_blank" class="btn btn-outline">LinkedIn</a>
+      <!--<a href="https://www.facebook.com/v.gali.ehba" target="_blank" class="btn btn-outline">facebook</a>-->
+    </div>
+  </div>
+  <div class="avatar">VG</div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <h2 class="section-title">Research Focus</h2>
+  <p class="section-sub">Analysis of security of cryptographic protocols under different models of attack.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>Post-Quantum Cryptographic Schemes</h3>
+      <div class="meta">PhD Thesis: University of Birmingham</div>
+      <p>Analysis of the security of post-quantum cryptographic schemes and protocols under varied attack models. Supervised by Dr Rishiraj Bhattacharyya and Dr Christophe Petit.</p>
+    </div>
+    <div class="card">
+      <h3>Supersingular Isogenies Graphs of Elliptic Curves</h3>
+      <div class="meta">University of Vienna  Research visit</div>
+      <p>Work on supersingular isogeny graphs of elliptic curves, connecting number theory and algebraic geometry to isogeny-based cryptography.</p>
+    </div>
+    <div class="card">
+      <h3>Elliptic Curve Theory & Cryptography</h3>
+      <div class="meta">MSc Thesis  AIMS Cameroon</div>
+      <p>Study of elliptic curve theory with application to cryptography, exploring the mathematical foundations for modern public-key cryptographic systems.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background:var(--bg-alt);max-width:none;">
+  <div style="max-width:1100px;margin:0 auto;">
+  <h2 class="section-title">Professional Experience</h2>
+  <p class="section-sub">Teaching, assisting.</p>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">Oct 2025 - Mar 2026</div>
+      <div class="tl-card">
+        <h3>University Teaching Assistant</h3>
+        <div class="org">University of Birmingham -- United Kingdom</div>
+        <ul>
+          <li>Assist lecturers during lab sessions</li>
+          <li>Provide constructive feedback to students</li>
+          <li>Assess student work and progress</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">May 2024 – Jul 2025</div>
+      <div class="tl-card">
+        <h3>Assistant Teacher</h3>
+        <div class="org">École Nationale Supérieure des Travaux Publics (ENSTP) -- N'Djamena, Chad</div>
+        <ul>
+          <li>Delivered exercise classes in geometry</li>
+          <li>Marked assignments and coursework</li>
+          <li>Conducted exam invigilations</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Aug 2023 – Sep 2023</div>
+      <div class="tl-card">
+        <h3>Program Coordinator · Volunteer</h3>
+        <div class="org">AJDECS Summer School · Pala, Chad</div>
+        <ul>
+          <li>Coordinated the summer school program</li>
+          <li>Taught mathematics and English language</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <h2 class="section-title">Education & Training</h2>
+ <!-- <p class="section-sub">A journey through mathematics, from Chad and Cameroon to Vienna and Birmingham.</p> -->
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-date">Sep 2025 – Present</div>
+      <div class="tl-card">
+        <h3>PhD Student <span class="badge">Current</span></h3>
+        <div class="org">University of Birmingham, United Kingdom · EQF Level 8</div>
+        <ul>
+          <li>Thesis: Analysis of post-quantum cryptographic schemes</li>
+          <li>Field: Mathematics · Information Security & Communication Technologies</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Sep 2024 – Mar 2025</div>
+      <div class="tl-card">
+        <h3>Vienna Africa Mathematics Scholar</h3>
+        <div class="org">Faculty of Mathematics, University of Vienna, Austria · 21 ECTS</div>
+        <ul>
+          <li>Algebraic geometry: Noetherian rings, morphisms of varieties, dimension, tangent space & Grassmannian</li>
+          <li>Algebraic number theory: rings of integers, Dedekind domains, class group, Minkowski theorem</li>
+          <li>Algebra seminar: explicit construction of Ramanujan graphs</li>
+          <li>Cryptography: classical protocols, hashing, security of social apps & cryptocurrencies</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Aug 2022 – Jun 2023</div>
+      <div class="tl-card">
+        <h3>MSc in Mathematical Sciences <span class="badge">A</span> </h3>
+        <div class="org">African Institute for Mathematical Sciences (AIMS), Cameroon</div>
+        <ul>
+          <li>Thesis: The Elliptic Curve factorisation method</li>
+          <li>Fully funded AIMS scholarship (fundamental stream)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Sep 2021 – Jul 2022</div>
+      <div class="tl-card">
+        <h3>Master 1 in Algebra & Geometry <span class="badge">B+</span></h3>
+        <div class="org">University of Maroua, Cameroon</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Sep 2018 – Jul 2021</div>
+      <div class="tl-card">
+        <h3>Bachelor's Degree in Applied Mathematics <span class="badge">C+</span></h3>
+        <div class="org">University of Maroua, Cameroon</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-date">Jul 2018</div>
+      <div class="tl-card">
+        <h3>Baccalaureate<span class="badge">B</span></h3>
+        <div class="org">Lycée de Sorga, Chad</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+<section id="activities" style="background:var(--bg-alt);max-width:none;">
+  <div style="max-width:1100px;margin:0 auto;">
+  <h2 class="section-title">Conferences, Awards & Memberships</h2>
+  <p class="section-sub">Academic engagement, honours and community leadership.</p>
+  <div class="grid">
+    <div class="card">
+      <h3>CIMPA Summer School</h3>
+      <div class="meta">Jul 2024 · Douala, Cameroon</div>
+      <p>Algebra, algebraic geometry & application to information theory — courses on elliptic curves, lattices, algebraic varieties, number theory and coding theory. Presented a research project on isogeny graphs of elliptic curves.</p>
+    </div>
+    <div class="card">
+      <h3>AIMS Cameroon Programming Forum</h3>
+      <div class="meta">Oct 2022 · Limbe, Cameroon</div>
+      <p>Basic Python; solving ODEs with SciPy and NumPy.</p>
+    </div>
+    <div class="card">
+      <h3>Vienna African Mathematics Scholarship</h3>
+      <div class="meta">Award · 2024 · University of Vienna</div>
+      <p>Six-month research visit at the Faculty of Mathematics, attending seminars and courses in number theory, algebraic geometry and cryptography.</p>
+    </div>
+    <div class="card">
+      <h3>AIMS Scholarship</h3>
+      <div class="meta">Award · 2022 · AIMS Cameroon</div>
+      <p>Fully funded scholarship for a one-year MSc in Mathematical Sciences.</p>
+    </div>
+    <div class="card">
+      <h3>Pala High School Competition Prize</h3>
+      <div class="meta">Award · 2018 · Centre Culturel Nicodème</div>
+      <p>Won the cultural competition in Pala representing Lycée Communal de Pala.</p>
+    </div>
+    <div class="card">
+      <h3>President — AJDECS</h3>
+      <div class="meta">Membership · 2020 – 2024 · Pala</div>
+      <p>Led a local youth organization promoting scientific thinking and community development.</p>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <h2 class="section-title">Skills & Languages</h2>
+  <p class="section-sub">Technical tools and languages I work with.</p>
+  <div class="skills-grid" style="margin-bottom:40px;">
+    <span class="skill">SageMath</span>
+    <span class="skill">Python</span>
+    <span class="skill">LaTeX</span>
+    <span class="skill">SciPy / NumPy</span>
+    <span class="skill">Microsoft Office</span>
+    <span class="skill">Lesson Content Design</span>
+    <span class="skill">Student Assessment</span>
+    <span class="skill">Project Writing</span>
+    <span class="skill">Leadership & Team Management</span>
+    <span class="skill">Fast Learner</span>
+  </div>
+  <div class="lang-grid">
+    <div class="lang-card">
+      <h4>Mundang <span class="lvl">Mother tongue</span></h4>
+      <div class="skills-mini">Native proficiency</div>
+    </div>
+    <div class="lang-card">
+      <h4>French <span class="lvl">C2</span></h4>
+      <div class="skills-mini">Fluent — Listening, Reading, Writing & Speaking (C2)</div>
+    </div>
+    <div class="lang-card">
+      <h4>English <span class="lvl">C1 / B2</span></h4>
+      <div class="skills-mini">Listening & Reading C1 · Writing & Speaking B2</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--bg-alt);max-width:none;">
+  <div style="max-width:1100px;margin:0 auto;">
+  <h2 class="section-title">Contact Me</h2>
+  <p class="section-sub">Feel free to reach out for collaborations, research or academic enquiries.</p>
+  <div class="contact-wrap">
+    <ul class="contact-list">
+      <li><span class="ic">📍</span> Edgbaston, B15 2TT, Birmingham, United Kingdom</li>
+      <li><span class="ic">✉</span> <a href="mailto:galiehba@gmail.com">galiehba@gmail.com</a></li>
+      <li><span class="ic">🎓</span> <a href="mailto:vxg528@student.bham.ac.uk">vxg528@student.bham.ac.uk</a></li>
+      <li><span class="ic">📞</span> <a href="tel:+447946575356">+44 7946 575356</a></li>
+      <li><span class="ic">💬</span> WhatsApp: +235 63488587</li>
+      <li><span class="ic">in</span> <a href="https://linkedin.com/in/vincent-gali-ehba" target="_blank">linkedin.com/in/vincent-gali-ehba</a></li>
+    </ul>
+    <form class="form" onsubmit="event.preventDefault(); alert('Thank you! This is a demo form.'); this.reset();">
+      <input type="text" placeholder="Name and first name" required>
+      <input type="email" placeholder="Your email address" required>
+      <textarea rows="5" placeholder="Your message" required></textarea>
+      <button type="submit" class="btn btn-primary" style="border:none;cursor:pointer;">Send Message</button>
+    </form>
+  </div>
+  </div>
+</section>
+
+<footer>
+  <div class="socials">
+    <a href="https://linkedin.com/in/vincent-gali-ehba" target="_blank">LinkedIn</a>
+    <a href="mailto:galiehba@gmail.com">Email</a>
+    <a href="tel:+447946575356">Phone</a>
+  </div>
+  Vincent Gali Ehba © 2026 · PhD in Post-Quantum Cryptography, University of Birmingham
+</footer>
+
+<script>
+// Theme toggle
+const themeBtn = document.getElementById('themeBtn');
+const root = document.documentElement;
+function setTheme(t){
+  root.setAttribute('data-theme', t);
+  themeBtn.textContent = t === 'light' ? '☀️' : '🌙';
+  localStorage.setItem('theme', t);
+}
+setTheme(localStorage.getItem('theme') || 'dark');
+themeBtn.addEventListener('click', () => {
+  setTheme(root.getAttribute('data-theme') === 'light' ? 'dark' : 'light');
+});
+// Burger menu
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+</script>
+
+</body>
+</html>
